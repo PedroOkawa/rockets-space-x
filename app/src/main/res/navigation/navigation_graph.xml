@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_graph"
+            app:startDestination="@id/rocketsListFragment">
+
+	<fragment android:id="@+id/rocketsListFragment"
+	          android:name="com.okawa.rockets.ui.main.rocketslist.RocketsListFragment"
+	          android:label="RocketsListFragment">
+		<action android:id="@+id/action_rocketsListFragment_to_rocketDetailsFragment"
+		        app:destination="@id/rocketDetailsFragment"/>
+	</fragment>
+	<fragment android:id="@+id/rocketDetailsFragment" android:name="com.okawa.rockets.ui.main.RocketDetailsFragment"
+	          android:label="RocketDetailsFragment"/>
+</navigation>

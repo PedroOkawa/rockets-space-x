@@ -24,6 +24,10 @@ dependencies {
     /* LOGGING INTERCEPTOR (OK HTTP) */
     implementation libraries.okHttp.logging
 
+    /* NAVIGATION */
+    implementation libraries.navigation.fragment
+    implementation libraries.navigation.ui
+
     /* RETROFIT */
     implementation libraries.retrofit.base
     implementation libraries.retrofit.moshiConverter
