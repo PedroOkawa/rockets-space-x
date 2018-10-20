@@ -1,0 +1,61 @@
+apply from: '../versions.gradle'
+
+ext.libraries = [
+
+        architecture : [
+                lifecycle               : "android.arch.lifecycle:extensions:$versions.architectureVersion",
+                paging                  : "android.arch.paging:runtime:$versions.architecturePagingVersion",
+                room                    : "android.arch.persistence.room:runtime:$versions.architectureVersion",
+                roomCompiler            : "android.arch.persistence.room:compiler:$versions.architectureVersion"
+        ],
+
+        appCompat : [
+                base                    : "com.android.support:appcompat-v7:$versions.appCompatVersion",
+                cardView                : "com.android.support:cardview-v7:$versions.appCompatVersion",
+                recyclerView            : "com.android.support:recyclerview-v7:$versions.appCompatVersion"
+        ],
+
+        dagger : [
+                base                    : "com.google.dagger:dagger:$versions.daggerVersion",
+                compiler                : "com.google.dagger:dagger-compiler:$versions.daggerVersion",
+                android                 : "com.google.dagger:dagger-android:$versions.daggerVersion",
+                androidProcessor        : "com.google.dagger:dagger-android-processor:$versions.daggerVersion",
+                androidSupport          : "com.google.dagger:dagger-android-support:$versions.daggerVersion"
+        ],
+
+        jUnit : [
+                base                    : "junit:junit:$versions.jUnitVersion"
+        ],
+
+        kotlin : [
+                base                    : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+        ],
+
+        mockito : [
+                base                    : "org.mockito:mockito-core:$versions.mockitoVersion",
+                android                 : "org.mockito:mockito-android:$versions.mockitoAndroidVersion"
+        ],
+
+        navigation : [
+                fragment                : "android.arch.navigation:navigation-fragment-ktx:$versions.navigationVersion",
+                ui                      : "android.arch.navigation:navigation-ui-ktx:$versions.navigationVersion",
+                test                    : "android.arch.navigation:navigation-testing-ktx:$versions.navigationVersion"
+        ],
+
+        okHttp : [
+                logging                 : "com.squareup.okhttp3:logging-interceptor:$versions.loggingOkHttpVersion"
+        ],
+
+        retrofit : [
+                base                    : "com.squareup.retrofit2:retrofit:$versions.retrofitVersion",
+                moshiConverter          : "com.squareup.retrofit2:converter-moshi:$versions.retrofitVersion"
+        ],
+
+        test : [
+                contrib                 : "com.android.support.test.espresso:espresso-contrib:$versions.testEspressoVersion",
+                core                    : "com.android.support.test.espresso:espresso-core:$versions.testEspressoVersion",
+                intents                 : "com.android.support.test.espresso:espresso-intents:$versions.testEspressoVersion",
+                runner                  : "com.android.support.test:runner:$versions.testRunnerVersion",
+                rules                   : "com.android.support.test:rules:$versions.testRulesVersion"
+        ]
+]

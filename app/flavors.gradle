@@ -1,0 +1,29 @@
+apply from: '../versions.gradle'
+
+android {
+    compileSdkVersion versions.compileSdk
+    flavorDimensions "app"
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+    }
+
+    productFlavors {
+        dev {
+            dimension "app"
+            versionCode 1
+            versionName "0.0.1"
+
+            buildConfigField "String", "API_URL", "\"https://api.spacexdata.com/\""
+        }
+
+        prod {
+            dimension "app"
+            versionCode 1
+            versionName "1.0.0"
+
+            buildConfigField "String", "API_URL", "\"https://api.spacexdata.com/\""
+        }
+    }
+}
