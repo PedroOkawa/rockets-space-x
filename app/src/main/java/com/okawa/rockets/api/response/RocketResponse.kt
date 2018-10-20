@@ -8,5 +8,7 @@ data class RocketResponse(
     @Json(name = "rocket_name") val rocketName: String,
     val description: String,
     val country: String,
-    val engines: EngineResponse
+    val active: Boolean,
+    val engines: EngineResponse,
+    @Json(name = "flickr_images") val images: List<String>
 )

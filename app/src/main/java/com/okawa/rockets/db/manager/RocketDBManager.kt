@@ -14,7 +14,7 @@ class RocketDBManager @Inject constructor(
 
     fun storeRockets(rockets: List<RocketResponse>?) {
         rockets?.let {
-            rocketDao.insertAll(rocketMapper.convertToDB(rockets))
+            rocketDao.insertAll(rocketMapper.convert(rockets))
         }
     }
 

@@ -9,6 +9,8 @@ dependencies {
     implementation libraries.architecture.room
     kapt libraries.architecture.roomCompiler
     implementation libraries.appCompat.base
+    implementation libraries.appCompat.cardView
+    implementation libraries.appCompat.constraintLayout
     implementation libraries.appCompat.recyclerView
 
     /* DAGGER */
@@ -17,6 +19,9 @@ dependencies {
     implementation libraries.dagger.androidSupport
     kapt libraries.dagger.compiler
     kapt libraries.dagger.androidProcessor
+
+    /* GLIDE */
+    implementation libraries.glide.base
 
     /* KOTLIN */
     implementation libraries.kotlin.base

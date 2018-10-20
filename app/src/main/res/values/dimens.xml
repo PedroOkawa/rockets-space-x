@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<dimen name="rocket_adapter_root_margin">8dp</dimen>
+	<dimen name="rocket_adapter_container_padding">8dp</dimen>
+	<dimen name="rocket_adapter_image_height">180dp</dimen>
+	<dimen name="rocket_adapter_active_sign_size">36dp</dimen>
+
+	<dimen name="text_size_headline">24sp</dimen>
+	<dimen name="text_size_title">18sp</dimen>
+	<dimen name="text_size_sub_title">16sp</dimen>
+	<dimen name="text_size_body">14sp</dimen>
+
+</resources>

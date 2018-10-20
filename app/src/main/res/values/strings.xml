@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Rockets</string>
+
+    <string name="rocket_adapter_engines_title">Engine(s)</string>
+
+    <string name="error_rockets_list_generic">Unable to retrieve list of rockets</string>
+
 </resources>

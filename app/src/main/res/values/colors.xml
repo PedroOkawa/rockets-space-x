@@ -4,7 +4,33 @@
     <color name="colorPrimaryDark">@color/colorTeal00574B</color>
     <color name="colorAccent">@color/colorPinkD81B60</color>
 
+    <color name="colorTextBlack">@color/colorBlack252525</color>
+    <color name="colorTextWhite">@color/colorWhiteDFDFDF</color>
+    <color name="colorTextLight">@color/colorTeal15A999</color>
+    <color name="colorTextDark">@color/colorTeal17584F</color>
+
+    <color name="colorToolbar">@color/colorTeal17584F</color>
+
+    <color name="colorOverlayStart">@color/colorBlackCC292929</color>
+    <color name="colorOverlayEnd">@color/colorTransparent00000000</color>
+
+    <color name="colorActiveSign">@color/colorTeal15A999</color>
+    <color name="colorInactiveSign">@color/colorGrey696C6C</color>
+
+    <color name="colorBlack252525">#252525</color>
+    <color name="colorBlackCC292929">#CC292929</color>
+
+    <color name="colorGrey696C6C">#696C6C</color>
+
+    <color name="colorPinkD81B60">#D81B60</color>
+
     <color name="colorTeal008577">#008577</color>
     <color name="colorTeal00574B">#00574B</color>
-    <color name="colorPinkD81B60">#D81B60</color>
+    <color name="colorTeal15A999">#15A999</color>
+    <color name="colorTeal17584F">#17584F</color>
+
+    <color name="colorTransparent00000000">#00000000</color>
+
+    <color name="colorWhiteDFDFDF">#DFDFDF</color>
+
 </resources>

@@ -6,20 +6,23 @@ import javax.inject.Inject
 
 class RocketMapper @Inject constructor() {
 
-    fun convertToDB(rocket: RocketResponse) : RocketEntity {
-        return RocketEntity(rocket.id,
+    fun convert(rockets: List<RocketResponse>) : List<RocketEntity> {
+        return rockets.map { rocket ->
+            convert(rocket)
+        }
+    }
+
+    private fun convert(rocket: RocketResponse): RocketEntity {
+        return RocketEntity(
+            rocket.id,
             rocket.rocketId,
             rocket.rocketName,
             rocket.description,
-            rocket.engines.number)
-    }
-
-    fun convertToDB(rockets: List<RocketResponse>) : List<RocketEntity> {
-        val result = ArrayList<RocketEntity>()
-        rockets.forEach { rocket ->
-            result.add(convertToDB(rocket))
-        }
-        return result
+            rocket.country,
+            rocket.active,
+            rocket.engines.number,
+            rocket.images
+        )
     }
 
 }

@@ -5,10 +5,11 @@
 
 	<fragment android:id="@+id/rocketsListFragment"
 	          android:name="com.okawa.rockets.ui.main.list.RocketsListFragment"
-	          android:label="RocketsListFragment">
+	          android:label="Rockets">
 		<action android:id="@+id/action_rocketsListFragment_to_rocketDetailsFragment"
 		        app:destination="@id/rocketDetailsFragment"/>
 	</fragment>
-	<fragment android:id="@+id/rocketDetailsFragment" android:name="com.okawa.rockets.ui.main.details.RocketDetailsFragment"
-	          android:label="RocketDetailsFragment"/>
+	<fragment android:id="@+id/rocketDetailsFragment"
+	          android:name="com.okawa.rockets.ui.main.details.RocketDetailsFragment"
+	          android:label="Details"/>
 </navigation>

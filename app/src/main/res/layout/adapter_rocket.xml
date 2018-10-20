@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="@dimen/rocket_adapter_root_margin">
+
+	<android.support.constraint.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="@dimen/rocket_adapter_container_padding">
+
+		<android.support.constraint.Guideline
+				android:id="@+id/gdlRocketAdapterActiveSignLimit"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				app:layout_constraintGuide_percent="0.85"/>
+
+		<ImageView
+				android:id="@+id/imgRocketAdapterImage"
+				android:layout_width="match_parent"
+				android:layout_height="@dimen/rocket_adapter_image_height"
+				android:scaleType="centerCrop"/>
+
+		<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="@drawable/background_overlay"
+				android:gravity="end"
+				android:paddingStart="12dp"
+				android:paddingEnd="12dp"
+				android:paddingTop="4dp"
+				android:paddingBottom="24dp"
+				app:layout_constraintStart_toStartOf="@+id/imgRocketAdapterImage"
+				app:layout_constraintEnd_toEndOf="@+id/imgRocketAdapterImage"
+				app:layout_constraintTop_toTopOf="@+id/imgRocketAdapterImage">
+
+			<TextView
+					android:id="@+id/txtRocketAdapterEngineCount"
+					style="@style/AppTheme.Headline.White"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:textStyle="bold"
+					tools:text="2"/>
+
+			<TextView
+					style="@style/AppTheme.SubTitle.White"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:text="@string/rocket_adapter_engines_title"
+					android:textStyle="bold"/>
+
+		</LinearLayout>
+
+		<TextView
+				android:id="@+id/txtRocketAdapterName"
+				style="@style/AppTheme.Title.Dark"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:textStyle="bold"
+				app:layout_constraintTop_toBottomOf="@+id/imgRocketAdapterImage"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toStartOf="@+id/gdlRocketAdapterActiveSignLimit"
+				tools:text="ROCKET NAME"/>
+
+		<TextView
+				android:id="@+id/txtRocketAdapterCountry"
+				style="@style/AppTheme.Body.Light"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				app:layout_constraintTop_toBottomOf="@+id/txtRocketAdapterName"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toStartOf="@+id/gdlRocketAdapterActiveSignLimit"
+				tools:text="ROCKET COUNTRY"/>
+
+		<FrameLayout
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				app:layout_constraintTop_toBottomOf="@+id/imgRocketAdapterImage"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintStart_toEndOf="@+id/gdlRocketAdapterActiveSignLimit"
+				app:layout_constraintEnd_toEndOf="parent">
+
+			<View
+					android:id="@+id/viwRocketAdapterActiveSign"
+					android:layout_width="@dimen/rocket_adapter_active_sign_size"
+					android:layout_height="@dimen/rocket_adapter_active_sign_size"
+					android:layout_gravity="bottom|end"
+					android:background="@drawable/selector_active_sign"/>
+
+		</FrameLayout>
+
+	</android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>

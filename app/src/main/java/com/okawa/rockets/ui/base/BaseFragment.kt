@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.NavHostFragment
 import dagger.android.support.AndroidSupportInjection
 
 abstract class BaseFragment<VM: ViewModel>: Fragment() {
@@ -31,5 +32,7 @@ abstract class BaseFragment<VM: ViewModel>: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         doOnCreated()
     }
+
+    protected fun getNavController() = NavHostFragment.findNavController(this)
 
 }
