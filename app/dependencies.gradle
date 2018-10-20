@@ -24,6 +24,9 @@ dependencies {
     /* LOGGING INTERCEPTOR (OK HTTP) */
     implementation libraries.okHttp.logging
 
+    /* MOSHI */
+    implementation libraries.moshi.kotlin
+
     /* NAVIGATION */
     implementation libraries.navigation.fragment
     implementation libraries.navigation.ui

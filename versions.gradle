@@ -8,6 +8,7 @@ ext.versions = [
         loggingOkHttpVersion: '3.9.1',
         mockitoVersion: '2.8.47',
         mockitoAndroidVersion: '2.19.0',
+        moshiVersion: '1.7.0',
         navigationVersion: '1.0.0-alpha06',
         retrofitVersion: '2.4.0',
         runnerVersion: '1.0.2',

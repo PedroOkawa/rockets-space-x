@@ -2,8 +2,7 @@ package com.okawa.rockets.di.component
 
 import android.app.Application
 import com.okawa.rockets.App
-import com.okawa.rockets.di.module.ActivityBuilderModule
-import com.okawa.rockets.di.module.ViewModelModule
+import com.okawa.rockets.di.module.*
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -15,6 +14,9 @@ import javax.inject.Singleton
 [
     ActivityBuilderModule::class,
     AndroidSupportInjectionModule::class,
+    ApiModule::class,
+    DatabaseModule::class,
+    RepositoryModule::class,
     ViewModelModule::class
 ])
 interface AppComponent: AndroidInjector<App> {
