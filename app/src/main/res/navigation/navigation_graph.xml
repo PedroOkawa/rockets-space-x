@@ -4,11 +4,11 @@
             app:startDestination="@id/rocketsListFragment">
 
 	<fragment android:id="@+id/rocketsListFragment"
-	          android:name="com.okawa.rockets.ui.main.rocketslist.RocketsListFragment"
+	          android:name="com.okawa.rockets.ui.main.list.RocketsListFragment"
 	          android:label="RocketsListFragment">
 		<action android:id="@+id/action_rocketsListFragment_to_rocketDetailsFragment"
 		        app:destination="@id/rocketDetailsFragment"/>
 	</fragment>
-	<fragment android:id="@+id/rocketDetailsFragment" android:name="com.okawa.rockets.ui.main.RocketDetailsFragment"
+	<fragment android:id="@+id/rocketDetailsFragment" android:name="com.okawa.rockets.ui.main.details.RocketDetailsFragment"
 	          android:label="RocketDetailsFragment"/>
 </navigation>

@@ -1,7 +1,7 @@
 package com.okawa.rockets.di.module
 
-import com.okawa.rockets.ui.main.RocketDetailsFragment
-import com.okawa.rockets.ui.main.rocketslist.RocketsListFragment
+import com.okawa.rockets.ui.main.details.RocketDetailsFragment
+import com.okawa.rockets.ui.main.list.RocketsListFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
