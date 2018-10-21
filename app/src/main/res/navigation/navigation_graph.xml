@@ -11,5 +11,7 @@
 	</fragment>
 	<fragment android:id="@+id/rocketDetailsFragment"
 	          android:name="com.okawa.rockets.ui.main.details.RocketDetailsFragment"
-	          android:label="Details"/>
+	          android:label="Details">
+		<argument android:name="rocketId" app:argType="integer"/>
+	</fragment>
 </navigation>

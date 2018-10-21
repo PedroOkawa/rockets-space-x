@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.arch.paging.PagedList
+import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuInflater
@@ -13,6 +14,7 @@ import com.okawa.rockets.data.Result
 import com.okawa.rockets.data.Status
 import com.okawa.rockets.db.entity.RocketEntity
 import com.okawa.rockets.ui.base.BaseFragment
+import com.okawa.rockets.ui.main.details.RocketDetailsFragment
 import com.okawa.rockets.utils.ToastManager
 import com.okawa.rockets.utils.adapter.RocketAdapter
 import kotlinx.android.synthetic.main.fragment_rockets_list.*
@@ -64,7 +66,7 @@ class RocketsListFragment: BaseFragment<RocketsListViewModel>() {
         rclRocketsListFragmentContent.layoutManager = LinearLayoutManager(context)
         rclRocketsListFragmentContent.adapter = rocketAdapter
         rocketAdapter.setOnItemClickListener {
-            getNavController().navigate(R.id.rocketDetailsFragment)
+            openDetails(it.id)
         }
     }
 
@@ -110,5 +112,11 @@ class RocketsListFragment: BaseFragment<RocketsListViewModel>() {
 
     private fun setLoading(isLoading: Boolean) {
         swpRocketsListFragmentSwipeRefresh.isRefreshing = isLoading
+    }
+
+    private fun openDetails(rocketId: Long) {
+        val bundle = Bundle()
+        bundle.putLong(RocketDetailsFragment.BUNDLE_DETAILS_ROCKET_ID, rocketId)
+        getNavController().navigate(R.id.rocketDetailsFragment, bundle)
     }
 }
