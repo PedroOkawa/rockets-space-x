@@ -18,8 +18,8 @@ class RocketDBManager @Inject constructor(
         }
     }
 
-    fun retrieveAllRockets(): DataSource.Factory<Int, RocketEntity> {
-        return rocketDao.loadRockets()
+    fun retrieveRockets(filterByActive: Boolean?): DataSource.Factory<Int, RocketEntity> {
+        return if(filterByActive == true) rocketDao.loadActiveRockets() else rocketDao.loadRockets()
     }
 
 }

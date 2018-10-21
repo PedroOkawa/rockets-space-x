@@ -1,8 +1,17 @@
 <resources>
+
+    <!-- APP -->
     <string name="app_name">Rockets</string>
 
+    <!-- ROCKETS LIST -->
+    <string name="rockets_list_menu_filter">Filter</string>
+    <string name="rockets_list_menu_filter_all">All Rockets</string>
+    <string name="rockets_list_menu_filter_active">Active Rockets</string>
+
+    <!-- ROCKET ADAPTER -->
     <string name="rocket_adapter_engines_title">Engine(s)</string>
 
+    <!-- ERRORS -->
     <string name="error_rockets_list_generic">Unable to retrieve list of rockets</string>
 
 </resources>

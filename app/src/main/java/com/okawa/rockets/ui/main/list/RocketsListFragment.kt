@@ -5,6 +5,9 @@ import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.arch.paging.PagedList
 import android.support.v7.widget.LinearLayoutManager
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import com.okawa.rockets.R
 import com.okawa.rockets.data.Result
 import com.okawa.rockets.data.Status
@@ -27,6 +30,24 @@ class RocketsListFragment: BaseFragment<RocketsListViewModel>() {
         RocketAdapter()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater?.inflate(R.menu.menu_rockets_list, menu)
+        menu?.let {
+            if(viewModel.retrieveFilterValue() == true) {
+                it.findItem(R.id.menu_filter_active).isChecked = true
+            } else {
+                it.findItem(R.id.menu_filter_all).isChecked = true
+            }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        filterByActive(item?.itemId == R.id.menu_filter_active)
+        item?.isChecked = true
+
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun defineViewModel() =
         ViewModelProviders.of(this, viewModelFactory).get(RocketsListViewModel::class.java)
 
@@ -36,6 +57,7 @@ class RocketsListFragment: BaseFragment<RocketsListViewModel>() {
         initRocketListView()
         initSwipeRefresh()
         retrieveData()
+        filterByActive(viewModel.retrieveFilterValue())
     }
 
     private fun initRocketListView() {
@@ -47,16 +69,20 @@ class RocketsListFragment: BaseFragment<RocketsListViewModel>() {
     }
 
     private fun initSwipeRefresh() {
-        swpRocketsListFragmentSwipeRefresh.isRefreshing = true
+        swpRocketsListFragmentSwipeRefresh.setColorSchemeResources(R.color.colorAccent)
         swpRocketsListFragmentSwipeRefresh.setOnRefreshListener {
             retrieveData()
         }
-        swpRocketsListFragmentSwipeRefresh.setColorSchemeResources(R.color.colorAccent)
+    }
+
+    private fun filterByActive(filter: Boolean?) {
+        viewModel.filterByActive(filter)
     }
 
     private fun retrieveData() {
-        viewModel.retrieveRockets().observe(this, Observer { result ->
-            swpRocketsListFragmentSwipeRefresh.isRefreshing = false
+        setLoading(true)
+        viewModel.getRocketsLiveData().observe(this, Observer { result ->
+            setLoading(false)
             handleState(result)
         })
     }
@@ -68,13 +94,21 @@ class RocketsListFragment: BaseFragment<RocketsListViewModel>() {
         }
 
         when(result.status) {
-            Status.SUCCESS -> {
-                rocketAdapter.setData(result.data)
-            }
-            Status.ERROR -> {
-                toastManager.showToast(result.message)
-            }
-            Status.LOADING -> { }
+            Status.SUCCESS -> onStatusSuccess(result.data)
+            Status.ERROR -> onStatusError(result.message)
+            Status.LOADING -> setLoading(true)
         }
+    }
+
+    private fun onStatusSuccess(data: PagedList<RocketEntity>?) {
+        rocketAdapter.setData(data)
+    }
+
+    private fun onStatusError(message: String?) {
+        toastManager.showToast(message)
+    }
+
+    private fun setLoading(isLoading: Boolean) {
+        swpRocketsListFragmentSwipeRefresh.isRefreshing = isLoading
     }
 }

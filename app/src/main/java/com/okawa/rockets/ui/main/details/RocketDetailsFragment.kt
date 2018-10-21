@@ -12,19 +12,19 @@ class RocketDetailsFragment: BaseFragment<RocketDetailsViewModel>() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if(item?.itemId == android.R.id.home) {
+            getNavController().navigateUp()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun defineViewModel() =
         ViewModelProviders.of(this, viewModelFactory).get(RocketDetailsViewModel::class.java)
 
     override fun layoutToInflate() = R.layout.fragment_rocket_details
 
     override fun doOnCreated() {
-        setHasOptionsMenu(true)
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if(item?.itemId == android.R.id.home) {
-            getNavController().navigateUp()
-        }
-        return super.onOptionsItemSelected(item)
     }
 }

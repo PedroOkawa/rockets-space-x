@@ -7,6 +7,6 @@ import com.okawa.rockets.db.entity.RocketEntity
 
 interface RocketRepository {
 
-    fun getRockets(): LiveData<Result<PagedList<RocketEntity>>>
+    fun getRockets(filterByActive: Boolean?): LiveData<Result<PagedList<RocketEntity>>>
 
 }

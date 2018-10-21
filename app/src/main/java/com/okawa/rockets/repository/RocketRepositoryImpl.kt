@@ -23,14 +23,14 @@ class RocketRepositoryImpl @Inject constructor(
         private const val PAGE_SIZE = 20
     }
 
-    override fun getRockets(): LiveData<Result<PagedList<RocketEntity>>> {
+    override fun getRockets(filterByActive: Boolean?): LiveData<Result<PagedList<RocketEntity>>> {
         return object: NetworkBoundResource<PagedList<RocketEntity>, List<RocketResponse>>(appExecutors) {
             override fun saveCallResult(data: List<RocketResponse>?) {
                 rocketDBManager.storeRockets(data)
             }
 
             override fun loadFromDatabase(): LiveData<PagedList<RocketEntity>> {
-                return LivePagedListBuilder(rocketDBManager.retrieveAllRockets(), PAGE_SIZE).build()
+                return LivePagedListBuilder(rocketDBManager.retrieveRockets(filterByActive), PAGE_SIZE).build()
             }
 
             override fun createCall(): LiveData<ApiResponse<List<RocketResponse>>> {

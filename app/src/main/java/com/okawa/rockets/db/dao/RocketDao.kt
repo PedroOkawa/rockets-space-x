@@ -13,7 +13,10 @@ interface RocketDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(rockets: List<RocketEntity>)
 
-    @Query("SELECT rocket.* FROM rocket")
+    @Query("SELECT * FROM rocket")
     fun loadRockets() : DataSource.Factory<Int, RocketEntity>
+
+    @Query("SELECT * FROM rocket WHERE active = 1")
+    fun loadActiveRockets() : DataSource.Factory<Int, RocketEntity>
 
 }
