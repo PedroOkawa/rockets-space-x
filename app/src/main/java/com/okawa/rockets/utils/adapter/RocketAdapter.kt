@@ -1,14 +1,12 @@
 package com.okawa.rockets.utils.adapter
 
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
 import com.okawa.rockets.R
 import com.okawa.rockets.db.entity.RocketEntity
-import com.okawa.rockets.utils.GlideApp
+import com.okawa.rockets.utils.module.GlideApp
 import kotlinx.android.synthetic.main.adapter_rocket.view.*
 
 class RocketAdapter: BaseAdapter<RocketEntity, RocketAdapter.RocketViewHolder>() {

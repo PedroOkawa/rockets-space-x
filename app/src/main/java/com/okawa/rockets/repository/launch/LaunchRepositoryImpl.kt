@@ -1,8 +1,6 @@
 package com.okawa.rockets.repository.launch
 
 import android.arch.lifecycle.LiveData
-import android.arch.paging.LivePagedListBuilder
-import android.arch.paging.PagedList
 import com.okawa.rockets.api.response.ApiResponse
 import com.okawa.rockets.api.response.LaunchResponse
 import com.okawa.rockets.api.service.ApiService
@@ -10,7 +8,7 @@ import com.okawa.rockets.data.NetworkBoundResource
 import com.okawa.rockets.data.Result
 import com.okawa.rockets.db.entity.LaunchEntity
 import com.okawa.rockets.db.manager.LaunchDBManager
-import com.okawa.rockets.utils.AppExecutors
+import com.okawa.rockets.utils.executors.AppExecutors
 import javax.inject.Inject
 
 class LaunchRepositoryImpl @Inject constructor(

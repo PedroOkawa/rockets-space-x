@@ -1,4 +1,4 @@
-package com.okawa.rockets.utils
+package com.okawa.rockets.utils.manager
 
 import android.app.Application
 import android.support.annotation.StringRes

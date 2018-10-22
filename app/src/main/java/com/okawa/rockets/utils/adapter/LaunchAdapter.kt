@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import com.okawa.rockets.R
 import com.okawa.rockets.db.entity.LaunchEntity
 import com.okawa.rockets.utils.DateUtils
-import com.okawa.rockets.utils.GlideApp
 import com.okawa.rockets.utils.extensions.setTextBoolean
 import com.okawa.rockets.utils.extensions.setTextDate
 import com.okawa.rockets.utils.extensions.setTextYear
+import com.okawa.rockets.utils.module.GlideApp
 import kotlinx.android.synthetic.main.adapter_launch.view.*
 
 class LaunchAdapter constructor(private val dateUtils: DateUtils): BaseAdapter<LaunchEntity, LaunchAdapter.LaunchViewHolder>() {

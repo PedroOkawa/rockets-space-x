@@ -13,8 +13,9 @@ import com.okawa.rockets.db.entity.LaunchEntity
 import com.okawa.rockets.db.entity.RocketEntity
 import com.okawa.rockets.ui.base.BaseFragment
 import com.okawa.rockets.utils.DateUtils
-import com.okawa.rockets.utils.ToastManager
+import com.okawa.rockets.utils.manager.ToastManager
 import com.okawa.rockets.utils.adapter.LaunchAdapter
+import com.okawa.rockets.utils.bus.ConnectionBus
 import kotlinx.android.synthetic.main.fragment_rocket_details.*
 import javax.inject.Inject
 
@@ -23,6 +24,9 @@ class RocketDetailsFragment: BaseFragment<RocketDetailsViewModel>() {
     companion object {
         const val BUNDLE_DETAILS_ROCKET_ID = "rocketId"
     }
+
+    @Inject
+    lateinit var connectionBus: ConnectionBus
 
     @Inject
     lateinit var dateUtils: DateUtils
@@ -50,12 +54,30 @@ class RocketDetailsFragment: BaseFragment<RocketDetailsViewModel>() {
     override fun layoutToInflate() = R.layout.fragment_rocket_details
 
     override fun doOnCreated() {
+        retrieveRocketData()
+        retrieveLaunchData()
+        initConnectionBus()
+    }
+
+    private fun initConnectionBus() {
+        connectionBus.observe(this, Observer { _ ->
+            defineRocketId()
+        })
+    }
+
+    private fun retrieveRocketData() {
         viewModel.getRocketLiveData().observe(this, Observer { result ->
             handleRocketStatus(result)
         })
+    }
+
+    private fun retrieveLaunchData() {
         viewModel.getLaunchLiveData().observe(this, Observer { result ->
             handleLaunchStatus(result)
         })
+    }
+
+    private fun defineRocketId() {
         val rocketId = arguments?.getString(BUNDLE_DETAILS_ROCKET_ID)
         viewModel.defineRocketId(rocketId)
     }
@@ -69,7 +91,7 @@ class RocketDetailsFragment: BaseFragment<RocketDetailsViewModel>() {
         when(result.status) {
             Status.SUCCESS -> onRocketSuccess(result.data)
             Status.ERROR -> onRocketError(result.message)
-            Status.LOADING -> {}
+            Status.LOADING -> onRocketLoading()
         }
     }
 
@@ -93,6 +115,7 @@ class RocketDetailsFragment: BaseFragment<RocketDetailsViewModel>() {
     }
 
     private fun onRocketSuccess(data: RocketEntity?) {
+        viwRocketDetailsFragmentError.visibility = View. GONE
         txtRocketDetailsFragmentName.text = data?.name
         txtRocketDetailsFragmentDescription.text = data?.description
     }
@@ -100,6 +123,10 @@ class RocketDetailsFragment: BaseFragment<RocketDetailsViewModel>() {
     private fun onRocketError(message: String?) {
         toastManager.showToast(message)
         viwRocketDetailsFragmentError.visibility = View. VISIBLE
+    }
+
+    private fun onRocketLoading() {
+        viwRocketDetailsFragmentError.visibility = View. GONE
     }
 
     private fun onLaunchSuccess(data: List<LaunchEntity>?) {

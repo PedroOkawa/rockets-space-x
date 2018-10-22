@@ -10,7 +10,7 @@ import com.okawa.rockets.data.NetworkBoundResource
 import com.okawa.rockets.data.Result
 import com.okawa.rockets.db.entity.RocketEntity
 import com.okawa.rockets.db.manager.RocketDBManager
-import com.okawa.rockets.utils.AppExecutors
+import com.okawa.rockets.utils.executors.AppExecutors
 import javax.inject.Inject
 
 class RocketRepositoryImpl @Inject constructor(
@@ -22,6 +22,7 @@ class RocketRepositoryImpl @Inject constructor(
     companion object {
 
         private const val PAGE_SIZE = 20
+
     }
 
     override fun getRocket(rocketId: String): LiveData<Result<RocketEntity>> {

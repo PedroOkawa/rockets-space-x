@@ -9,18 +9,23 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import com.okawa.rockets.R
 import com.okawa.rockets.data.Result
 import com.okawa.rockets.data.Status
 import com.okawa.rockets.db.entity.RocketEntity
 import com.okawa.rockets.ui.base.BaseFragment
 import com.okawa.rockets.ui.main.details.RocketDetailsFragment
-import com.okawa.rockets.utils.ToastManager
+import com.okawa.rockets.utils.manager.ToastManager
 import com.okawa.rockets.utils.adapter.RocketAdapter
+import com.okawa.rockets.utils.bus.ConnectionBus
 import kotlinx.android.synthetic.main.fragment_rockets_list.*
 import javax.inject.Inject
 
 class RocketsListFragment: BaseFragment<RocketsListViewModel>() {
+
+    @Inject
+    lateinit var connectionBus: ConnectionBus
 
     @Inject
     lateinit var toastManager: ToastManager
@@ -59,7 +64,13 @@ class RocketsListFragment: BaseFragment<RocketsListViewModel>() {
         initRocketListView()
         initSwipeRefresh()
         retrieveData()
-        filterByActive(viewModel.retrieveFilterValue())
+        initConnectionBus()
+    }
+
+    private fun initConnectionBus() {
+        connectionBus.observe(this, Observer { _ ->
+            filterByActive(viewModel.retrieveFilterValue())
+        })
     }
 
     private fun initRocketListView() {
@@ -103,14 +114,17 @@ class RocketsListFragment: BaseFragment<RocketsListViewModel>() {
     }
 
     private fun onSuccess(data: PagedList<RocketEntity>?) {
+        viwRocketsListFragmentError.visibility = View.GONE
         rocketAdapter.setData(data)
     }
 
     private fun onError(message: String?) {
         toastManager.showToast(message)
+        viwRocketsListFragmentError.visibility = View.VISIBLE
     }
 
     private fun setLoading(isLoading: Boolean) {
+        viwRocketsListFragmentError.visibility = View.GONE
         swpRocketsListFragmentSwipeRefresh.isRefreshing = isLoading
     }
 

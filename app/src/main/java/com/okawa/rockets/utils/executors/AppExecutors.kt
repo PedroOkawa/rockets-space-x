@@ -1,4 +1,4 @@
-package com.okawa.rockets.utils
+package com.okawa.rockets.utils.executors
 
 import android.os.Handler
 import android.os.Looper
@@ -18,7 +18,8 @@ class AppExecutors(
     constructor() : this(
         Executors.newSingleThreadExecutor(),
         Executors.newFixedThreadPool(3),
-        MainThreadExecutor())
+        MainThreadExecutor()
+    )
 
     fun getDiskIO() = diskIO
 

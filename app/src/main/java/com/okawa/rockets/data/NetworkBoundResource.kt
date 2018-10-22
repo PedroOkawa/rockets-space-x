@@ -7,7 +7,7 @@ import android.support.annotation.WorkerThread
 import com.okawa.rockets.api.response.ApiErrorResponse
 import com.okawa.rockets.api.response.ApiResponse
 import com.okawa.rockets.api.response.ApiSuccessResponse
-import com.okawa.rockets.utils.AppExecutors
+import com.okawa.rockets.utils.executors.AppExecutors
 
 abstract class NetworkBoundResource<ResultType, RequestType>
 @MainThread constructor(private val appExecutors: AppExecutors) {
