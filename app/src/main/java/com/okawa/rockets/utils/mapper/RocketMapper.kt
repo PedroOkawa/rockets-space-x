@@ -12,15 +12,15 @@ class RocketMapper @Inject constructor() {
         }
     }
 
-    private fun convert(rocket: RocketResponse): RocketEntity {
+    fun convert(rocket: RocketResponse): RocketEntity {
+        val enginesCount = rocket.engines?.number ?: 0
         return RocketEntity(
-            rocket.id,
             rocket.rocketId,
             rocket.rocketName,
             rocket.description,
             rocket.country,
             rocket.active,
-            rocket.engines.number,
+            enginesCount,
             rocket.images
         )
     }

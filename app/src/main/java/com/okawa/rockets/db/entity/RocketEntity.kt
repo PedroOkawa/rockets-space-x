@@ -5,8 +5,7 @@ import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 
 @Entity(tableName = "rocket")
-data class RocketEntity(@PrimaryKey @ColumnInfo(name = "id") var id: Long = 0,
-                         @ColumnInfo(name = "rocket_id") var rocketId: String,
+data class RocketEntity(@PrimaryKey @ColumnInfo(name = "rocket_id") var rocketId: String,
                          @ColumnInfo(name = "name") var name: String,
                          @ColumnInfo(name = "description") var description: String,
                          @ColumnInfo(name = "country") var country: String,

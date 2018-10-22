@@ -4,7 +4,7 @@ import android.arch.lifecycle.*
 import android.arch.paging.PagedList
 import com.okawa.rockets.data.Result
 import com.okawa.rockets.db.entity.RocketEntity
-import com.okawa.rockets.repository.RocketRepository
+import com.okawa.rockets.repository.rocket.RocketRepository
 import javax.inject.Inject
 
 class RocketsListViewModel @Inject constructor(

@@ -66,7 +66,7 @@ class RocketsListFragment: BaseFragment<RocketsListViewModel>() {
         rclRocketsListFragmentContent.layoutManager = LinearLayoutManager(context)
         rclRocketsListFragmentContent.adapter = rocketAdapter
         rocketAdapter.setOnItemClickListener {
-            openDetails(it.id)
+            openDetails(it.rocketId)
         }
     }
 
@@ -85,28 +85,28 @@ class RocketsListFragment: BaseFragment<RocketsListViewModel>() {
         setLoading(true)
         viewModel.getRocketsLiveData().observe(this, Observer { result ->
             setLoading(false)
-            handleState(result)
+            handleStatus(result)
         })
     }
 
-    private fun handleState(result: Result<PagedList<RocketEntity>>?) {
+    private fun handleStatus(result: Result<PagedList<RocketEntity>>?) {
         if(result == null) {
             toastManager.showToast(R.string.error_rockets_list_generic)
             return
         }
 
         when(result.status) {
-            Status.SUCCESS -> onStatusSuccess(result.data)
-            Status.ERROR -> onStatusError(result.message)
+            Status.SUCCESS -> onSuccess(result.data)
+            Status.ERROR -> onError(result.message)
             Status.LOADING -> setLoading(true)
         }
     }
 
-    private fun onStatusSuccess(data: PagedList<RocketEntity>?) {
+    private fun onSuccess(data: PagedList<RocketEntity>?) {
         rocketAdapter.setData(data)
     }
 
-    private fun onStatusError(message: String?) {
+    private fun onError(message: String?) {
         toastManager.showToast(message)
     }
 
@@ -114,9 +114,9 @@ class RocketsListFragment: BaseFragment<RocketsListViewModel>() {
         swpRocketsListFragmentSwipeRefresh.isRefreshing = isLoading
     }
 
-    private fun openDetails(rocketId: Long) {
+    private fun openDetails(rocketId: String) {
         val bundle = Bundle()
-        bundle.putLong(RocketDetailsFragment.BUNDLE_DETAILS_ROCKET_ID, rocketId)
+        bundle.putString(RocketDetailsFragment.BUNDLE_DETAILS_ROCKET_ID, rocketId)
         getNavController().navigate(R.id.rocketDetailsFragment, bundle)
     }
 }

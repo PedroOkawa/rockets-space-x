@@ -4,6 +4,7 @@ import com.okawa.rockets.BuildConfig
 import com.okawa.rockets.api.calladapter.LiveDataCallAdapterFactory
 import com.okawa.rockets.api.service.ApiService
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -11,6 +12,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -36,6 +38,7 @@ class ApiModule {
     fun providesMoshi(): Moshi {
         return Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
+            .add(Date::class.javaObjectType, Rfc3339DateJsonAdapter().nullSafe())
             .build()
     }
 

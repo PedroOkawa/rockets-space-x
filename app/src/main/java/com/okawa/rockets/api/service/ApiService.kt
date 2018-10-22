@@ -16,6 +16,6 @@ interface ApiService {
     fun getRockets(): LiveData<ApiResponse<List<RocketResponse>>>
 
     @GET("rockets/{rocketId}")
-    fun getRocketDetails(@Path("rocketId") rocketId: String): LiveData<ApiResponse<RocketResponse>>
+    fun getRocketById(@Path("rocketId") rocketId: String): LiveData<ApiResponse<RocketResponse>>
 
 }

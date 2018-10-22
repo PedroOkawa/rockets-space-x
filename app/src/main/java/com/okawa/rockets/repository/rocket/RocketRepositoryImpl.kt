@@ -1,4 +1,4 @@
-package com.okawa.rockets.repository
+package com.okawa.rockets.repository.rocket
 
 import android.arch.lifecycle.LiveData
 import android.arch.paging.LivePagedListBuilder
@@ -20,7 +20,25 @@ class RocketRepositoryImpl @Inject constructor(
 ): RocketRepository {
 
     companion object {
+
         private const val PAGE_SIZE = 20
+    }
+
+    override fun getRocket(rocketId: String): LiveData<Result<RocketEntity>> {
+        return object: NetworkBoundResource<RocketEntity, RocketResponse>(appExecutors) {
+            override fun saveCallResult(data: RocketResponse?) {
+                rocketDBManager.storeRocket(data)
+            }
+
+            override fun loadFromDatabase(): LiveData<RocketEntity> {
+                return rocketDBManager.retrieveRocket(rocketId)
+            }
+
+            override fun createCall(): LiveData<ApiResponse<RocketResponse>> {
+                return apiService.getRocketById(rocketId)
+            }
+
+        }.asLiveData()
     }
 
     override fun getRockets(filterByActive: Boolean?): LiveData<Result<PagedList<RocketEntity>>> {

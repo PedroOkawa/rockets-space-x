@@ -13,6 +13,7 @@ ext.libraries = [
                 base                    : "com.android.support:appcompat-v7:$versions.appCompatVersion",
                 cardView                : "com.android.support:cardview-v7:$versions.appCompatVersion",
                 constraintLayout        : "com.android.support.constraint:constraint-layout:$versions.appComparConstraintLayoutVersion",
+                design                  : "com.android.support:design:$versions.appCompatVersion",
                 recyclerView            : "com.android.support:recyclerview-v7:$versions.appCompatVersion"
         ],
 
@@ -42,6 +43,7 @@ ext.libraries = [
         ],
 
         moshi : [
+                adapters                : "com.squareup.moshi:moshi-adapters:$versions.moshiVersion",
                 kotlin                  : "com.squareup.moshi:moshi-kotlin:$versions.moshiVersion"
         ],
 
