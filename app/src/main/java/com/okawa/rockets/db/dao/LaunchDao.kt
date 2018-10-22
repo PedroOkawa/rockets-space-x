@@ -1,5 +1,6 @@
 package com.okawa.rockets.db.dao
 
+import android.arch.lifecycle.LiveData
 import android.arch.paging.DataSource
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
@@ -14,6 +15,6 @@ interface LaunchDao {
     fun insertAll(rockets: List<LaunchEntity>)
 
     @Query("SELECT * FROM launch WHERE rocket_id = :rocketId")
-    fun loadLaunchesByRocketId(rocketId: String?) : DataSource.Factory<Int, LaunchEntity>
+    fun loadLaunchesByRocketId(rocketId: String?) : LiveData<List<LaunchEntity>>
 
 }

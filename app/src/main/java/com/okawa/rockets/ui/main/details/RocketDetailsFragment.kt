@@ -3,9 +3,10 @@ package com.okawa.rockets.ui.main.details
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
-import android.arch.paging.PagedList
-import android.util.Log
+import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
 import com.okawa.rockets.R
 import com.okawa.rockets.data.Result
 import com.okawa.rockets.data.Status
@@ -13,6 +14,8 @@ import com.okawa.rockets.db.entity.LaunchEntity
 import com.okawa.rockets.db.entity.RocketEntity
 import com.okawa.rockets.ui.base.BaseFragment
 import com.okawa.rockets.utils.ToastManager
+import com.okawa.rockets.utils.adapter.LaunchAdapter
+import kotlinx.android.synthetic.main.fragment_rocket_details.*
 import javax.inject.Inject
 
 class RocketDetailsFragment: BaseFragment<RocketDetailsViewModel>() {
@@ -26,6 +29,10 @@ class RocketDetailsFragment: BaseFragment<RocketDetailsViewModel>() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val launchAdapter: LaunchAdapter by lazy {
+        LaunchAdapter()
+    }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if(item?.itemId == android.R.id.home) {
@@ -63,7 +70,7 @@ class RocketDetailsFragment: BaseFragment<RocketDetailsViewModel>() {
         }
     }
 
-    private fun handleLaunchStatus(result: Result<PagedList<LaunchEntity>>?) {
+    private fun handleLaunchStatus(result: Result<List<LaunchEntity>>?) {
         if(result == null) {
             toastManager.showToast(R.string.error_rockets_list_generic)
             return
@@ -77,13 +84,27 @@ class RocketDetailsFragment: BaseFragment<RocketDetailsViewModel>() {
     }
 
     private fun onRocketSuccess(data: RocketEntity?) {
-        toastManager.showToast(data.toString())
-        //rocketAdapter.setData(data)
+        txtRocketDetailsFragmentDescription.text = data?.description
     }
 
-    private fun onLaunchSuccess(data: PagedList<LaunchEntity>?) {
-        toastManager.showToast(data.toString())
-        //rocketAdapter.setData(data)
+    private fun onLaunchSuccess(data: List<LaunchEntity>?) {
+        val lineData = LineData()
+        data?.sortedBy {
+            it.launchDate
+        }?.forEachIndexed { index, launch ->
+            val entry = Entry(index.toFloat(), 2f)
+
+            lineData.addEntry(entry, index)
+        }
+        lncRocketDetailsFragmentLaunches.setDrawGridBackground(false)
+        lncRocketDetailsFragmentLaunches.data = lineData
+        lncRocketDetailsFragmentLaunches.data.notifyDataChanged()
+        lncRocketDetailsFragmentLaunches.notifyDataSetChanged()
+        lncRocketDetailsFragmentLaunches.invalidate()
+
+        rclRocketDetailsFragmentContent.layoutManager = LinearLayoutManager(context)
+        rclRocketDetailsFragmentContent.adapter = launchAdapter
+        launchAdapter.setData(data)
     }
 
     private fun onError(message: String?) {

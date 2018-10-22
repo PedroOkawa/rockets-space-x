@@ -19,18 +19,14 @@ class LaunchRepositoryImpl @Inject constructor(
     private val launchDBManager: LaunchDBManager
 ): LaunchRepository {
 
-    companion object {
-        private const val PAGE_SIZE = 20
-    }
-
-    override fun getLaunchesByRocketId(rocketId: String?): LiveData<Result<PagedList<LaunchEntity>>> {
-        return object: NetworkBoundResource<PagedList<LaunchEntity>, List<LaunchResponse>>(appExecutors) {
+    override fun getLaunchesByRocketId(rocketId: String?): LiveData<Result<List<LaunchEntity>>> {
+        return object: NetworkBoundResource<List<LaunchEntity>, List<LaunchResponse>>(appExecutors) {
             override fun saveCallResult(data: List<LaunchResponse>?) {
                 launchDBManager.storeLaunches(data)
             }
 
-            override fun loadFromDatabase(): LiveData<PagedList<LaunchEntity>> {
-                return LivePagedListBuilder(launchDBManager.retrieveLaunches(rocketId), PAGE_SIZE).build()
+            override fun loadFromDatabase(): LiveData<List<LaunchEntity>> {
+                return launchDBManager.retrieveLaunches(rocketId)
             }
 
             override fun createCall(): LiveData<ApiResponse<List<LaunchResponse>>> {

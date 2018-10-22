@@ -1,7 +1,6 @@
 package com.okawa.rockets.ui.main.details
 
 import android.arch.lifecycle.*
-import android.arch.paging.PagedList
 import com.okawa.rockets.data.Result
 import com.okawa.rockets.db.entity.LaunchEntity
 import com.okawa.rockets.db.entity.RocketEntity
@@ -16,7 +15,7 @@ class RocketDetailsViewModel @Inject constructor(
 
     private val rocketIdLiveData = MutableLiveData<String>()
     private val rocketLiveData: LiveData<Result<RocketEntity>>
-    private val launchLiveData: LiveData<Result<PagedList<LaunchEntity>>>
+    private val launchLiveData: LiveData<Result<List<LaunchEntity>>>
 
     init {
         rocketLiveData = Transformations.switchMap(rocketIdLiveData) { rocketId ->

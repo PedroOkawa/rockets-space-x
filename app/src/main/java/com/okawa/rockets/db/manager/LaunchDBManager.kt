@@ -1,5 +1,6 @@
 package com.okawa.rockets.db.manager
 
+import android.arch.lifecycle.LiveData
 import android.arch.paging.DataSource
 import com.okawa.rockets.api.response.LaunchResponse
 import com.okawa.rockets.db.dao.LaunchDao
@@ -18,7 +19,7 @@ class LaunchDBManager @Inject constructor(
         }
     }
 
-    fun retrieveLaunches(rocketId: String?): DataSource.Factory<Int, LaunchEntity> {
+    fun retrieveLaunches(rocketId: String?): LiveData<List<LaunchEntity>> {
         return launchDao.loadLaunchesByRocketId(rocketId)
     }
 

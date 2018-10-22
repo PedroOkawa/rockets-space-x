@@ -47,6 +47,10 @@ ext.libraries = [
                 kotlin                  : "com.squareup.moshi:moshi-kotlin:$versions.moshiVersion"
         ],
 
+        mpAndroidChart : [
+                base                    : "com.github.PhilJay:MPAndroidChart:$versions.mpAndroidChartVersion"
+        ],
+
         navigation : [
                 fragment                : "android.arch.navigation:navigation-fragment-ktx:$versions.navigationVersion",
                 ui                      : "android.arch.navigation:navigation-ui-ktx:$versions.navigationVersion",
