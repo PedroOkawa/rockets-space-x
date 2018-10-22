@@ -23,6 +23,7 @@ dependencies {
 
     /* GLIDE */
     implementation libraries.glide.base
+    kapt libraries.glide.compiler
 
     /* KOTLIN */
     implementation libraries.kotlin.base
@@ -33,9 +34,6 @@ dependencies {
     /* MOSHI */
     implementation libraries.moshi.adapters
     implementation libraries.moshi.kotlin
-
-    /* MP ANDROID CHART */
-    implementation libraries.mpAndroidChart.base
 
     /* NAVIGATION */
     implementation libraries.navigation.fragment

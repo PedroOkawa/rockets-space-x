@@ -26,7 +26,8 @@ ext.libraries = [
         ],
 
         glide : [
-                base                    : "com.github.bumptech.glide:glide:$versions.glideVersion"
+                base                    : "com.github.bumptech.glide:glide:$versions.glideVersion",
+                compiler                : "com.github.bumptech.glide:compiler:$versions.glideVersion"
         ],
 
         jUnit : [
@@ -45,10 +46,6 @@ ext.libraries = [
         moshi : [
                 adapters                : "com.squareup.moshi:moshi-adapters:$versions.moshiVersion",
                 kotlin                  : "com.squareup.moshi:moshi-kotlin:$versions.moshiVersion"
-        ],
-
-        mpAndroidChart : [
-                base                    : "com.github.PhilJay:MPAndroidChart:$versions.mpAndroidChartVersion"
         ],
 
         navigation : [

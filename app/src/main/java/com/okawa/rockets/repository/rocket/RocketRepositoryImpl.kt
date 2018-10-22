@@ -38,6 +38,10 @@ class RocketRepositoryImpl @Inject constructor(
                 return apiService.getRocketById(rocketId)
             }
 
+            override fun shouldRequestFromNetwork(data: RocketEntity?): Boolean {
+                return data == null
+            }
+
         }.asLiveData()
     }
 
@@ -53,6 +57,10 @@ class RocketRepositoryImpl @Inject constructor(
 
             override fun createCall(): LiveData<ApiResponse<List<RocketResponse>>> {
                 return apiService.getRockets()
+            }
+
+            override fun shouldRequestFromNetwork(data: PagedList<RocketEntity>?): Boolean {
+                return data == null || data.isEmpty()
             }
 
         }.asLiveData()

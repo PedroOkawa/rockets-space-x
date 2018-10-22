@@ -6,6 +6,10 @@ import javax.inject.Inject
 
 class LaunchMapper @Inject constructor() {
 
+    companion object {
+        private const val INVALID_ROCKET_ID = "invalid_rocket_id"
+    }
+
     fun convert(launches: List<LaunchResponse>) : List<LaunchEntity> {
         return launches.map { launch ->
             convert(launch)
@@ -13,10 +17,15 @@ class LaunchMapper @Inject constructor() {
     }
 
     private fun convert(launch: LaunchResponse): LaunchEntity {
+        val rocketId = launch.rocket?.rocketId ?: INVALID_ROCKET_ID
+        val missionPatch = launch.links?.missionPatch ?: ""
         return LaunchEntity(
             launch.flightNumber,
-            launch.rocket.rocketId,
-            launch.launchDate
+            launch.missionName,
+            launch.launchDate,
+            launch.launchSuccess,
+            missionPatch,
+            rocketId
         )
     }
 

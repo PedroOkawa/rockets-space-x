@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.okawa.rockets.R
 import com.okawa.rockets.db.entity.RocketEntity
+import com.okawa.rockets.utils.GlideApp
 import kotlinx.android.synthetic.main.adapter_rocket.view.*
 
 class RocketAdapter: BaseAdapter<RocketEntity, RocketAdapter.RocketViewHolder>() {
@@ -26,9 +27,11 @@ class RocketAdapter: BaseAdapter<RocketEntity, RocketAdapter.RocketViewHolder>()
         rocketViewHolder.itemView.setOnClickListener {
             onItemClickListener?.onClick(rocket)
         }
-        Glide
+
+        GlideApp
             .with(rocketViewHolder.imgRocketAdapterImage)
             .load(rocket.images.firstOrNull())
+            .placeholder(R.drawable.ic_image_placeholder)
             .into(rocketViewHolder.imgRocketAdapterImage)
     }
 

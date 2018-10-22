@@ -14,6 +14,8 @@
     <color name="colorOverlayStart">@color/colorBlackCC292929</color>
     <color name="colorOverlayEnd">@color/colorTransparent00000000</color>
 
+    <color name="colorErrorBackground">@color/colorWhiteDFDFDF</color>
+
     <color name="colorActiveSign">@color/colorTeal15A999</color>
     <color name="colorInactiveSign">@color/colorGrey696C6C</color>
 

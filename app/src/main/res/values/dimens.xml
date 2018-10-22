@@ -6,6 +6,13 @@
 	<dimen name="rocket_adapter_image_height">180dp</dimen>
 	<dimen name="rocket_adapter_active_sign_size">36dp</dimen>
 
+	<dimen name="rocket_details_fragment_description_margin">8dp</dimen>
+	<dimen name="rocket_details_fragment_launches_title">8dp</dimen>
+
+	<dimen name="launch_adapter_content_padding">8dp</dimen>
+	<dimen name="launch_adapter_patch_image_size">64dp</dimen>
+	<dimen name="launch_adapter_content_margin_horizontal">8dp</dimen>
+
 	<dimen name="text_size_headline">24sp</dimen>
 	<dimen name="text_size_title">18sp</dimen>
 	<dimen name="text_size_sub_title">16sp</dimen>

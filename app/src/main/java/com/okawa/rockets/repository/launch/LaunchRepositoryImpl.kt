@@ -33,6 +33,10 @@ class LaunchRepositoryImpl @Inject constructor(
                 return apiService.getLaunches()
             }
 
+            override fun shouldRequestFromNetwork(data: List<LaunchEntity>?): Boolean {
+                return data == null || data.isEmpty()
+            }
+
         }.asLiveData()
     }
 

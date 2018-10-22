@@ -11,7 +11,14 @@
     <!-- ROCKET ADAPTER -->
     <string name="rocket_adapter_engines_title">Engine(s)</string>
 
+    <!-- ROCKET DETAILS -->
+    <string name="rocket_details_launches_title">Launches</string>
+
+    <!-- LAUNCH ADAPTER -->
+    <string name="launch_adapter_success_text">Launch success: %s</string>
+
     <!-- ERRORS -->
     <string name="error_rockets_list_generic">Unable to retrieve list of rockets</string>
+    <string name="error_generic">There was an error, try again later</string>
 
 </resources>

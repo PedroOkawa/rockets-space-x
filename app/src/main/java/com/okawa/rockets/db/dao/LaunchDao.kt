@@ -14,7 +14,10 @@ interface LaunchDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(rockets: List<LaunchEntity>)
 
-    @Query("SELECT * FROM launch WHERE rocket_id = :rocketId")
+    @Query("SELECT * FROM launch WHERE rocket_id = :rocketId ORDER BY launch_date DESC")
+    fun loadLaunchesPerYear(rocketId: String?) : LiveData<List<LaunchEntity>>
+
+    @Query("SELECT * FROM launch WHERE rocket_id = :rocketId ORDER BY launch_date DESC")
     fun loadLaunchesByRocketId(rocketId: String?) : LiveData<List<LaunchEntity>>
 
 }
